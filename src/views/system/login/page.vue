@@ -9,7 +9,7 @@
       class="page-login--layer page-login--layer-time"
       flex="main:center cross:center"
     >
-      {{ time }}
+      <!-- {{ time }} -->
     </div>
     <div class="page-login--layer">
       <div
@@ -18,16 +18,14 @@
       >
         <div class="page-login--content-header">
           <p class="page-login--content-header-motto">
-            时间是一切财富中最宝贵的财富
+            <!-- 时间是一切财富中最宝贵的财富 -->
           </p>
         </div>
         <div
           class="page-login--content-main"
           flex="dir:top main:center cross:center"
         >
-          <!-- logo -->
           <img class="page-login--logo" src="./image/dvadmin.png" />
-          <!-- form -->
           <div class="page-login--form">
             <el-card shadow="never">
               <el-form
@@ -109,10 +107,9 @@
           <p class="page-login--content-footer-copyright">
             Copyright
             <d2-icon name="copyright" />
-            Copyright © 2018-2021 pro.django-vue-admin.com All Rights Reserved.
             |
             <a href="https://beian.miit.gov.cn" target="_blank">
-              晋ICP备18005113号-3
+              -
             </a>
           </p>
           <p class="page-login--content-footer-options">
@@ -137,148 +134,129 @@
 </template>
 
 <script>
-import dayjs from 'dayjs'
-import { mapActions } from 'vuex'
-import localeMixin from '@/locales/mixin.js'
-import * as api from './api'
+import dayjs from "dayjs";
+import { mapActions } from "vuex";
+import localeMixin from "@/locales/mixin.js";
+import * as api from "./api";
+
 export default {
   mixins: [localeMixin],
-  data () {
+  data() {
     return {
       timeInterval: null,
-      time: dayjs().format('HH:mm:ss'),
-      // 快速选择用户
+      time: dayjs().format("HH:mm:ss"),
       dialogVisible: false,
       users: [
         {
-          name: 'Admin',
-          username: 'admin',
-          password: 'admin'
+          name: "Admin",
+          username: "admin",
+          password: "admin",
         },
         {
-          name: 'Editor',
-          username: 'editor',
-          password: 'editor'
+          name: "Editor",
+          username: "editor",
+          password: "editor",
         },
         {
-          name: 'User1',
-          username: 'user1',
-          password: 'user1'
-        }
+          name: "User1",
+          username: "user1",
+          password: "user1",
+        },
       ],
-      // 表单
       formLogin: {
-        username: '',
-        password: '',
-        captcha: ''
+        username: "",
+        password: "",
+        captcha: "",
       },
-      // 表单校验
       rules: {
         username: [
           {
             required: true,
-            message: '请输入用户名',
-            trigger: 'blur'
-          }
+            message: "请输入用户名",
+            trigger: "blur",
+          },
         ],
         password: [
           {
             required: true,
-            message: '请输入密码',
-            trigger: 'blur'
-          }
+            message: "请输入密码",
+            trigger: "blur",
+          },
         ],
         captcha: [
           {
             required: true,
-            message: '请输入验证码',
-            trigger: 'blur'
-          }
-        ]
+            message: "请输入验证码",
+            trigger: "blur",
+          },
+        ],
       },
       captchaKey: null,
-      image_base: null
-    }
+      image_base: null,
+    };
   },
-  mounted () {
+  mounted() {
     this.timeInterval = setInterval(() => {
-      this.refreshTime()
-    }, 1000)
+      this.refreshTime();
+    }, 1000);
   },
-  beforeDestroy () {
-    clearInterval(this.timeInterval)
+  beforeDestroy() {
+    clearInterval(this.timeInterval);
   },
   methods: {
-    ...mapActions('d2admin/account', ['login']),
-    refreshTime () {
-      this.time = dayjs().format('HH:mm:ss')
+    ...mapActions("d2admin/account", ["login"]),
+    refreshTime() {
+      this.time = dayjs().format("HH:mm:ss");
     },
-    /**
-     * @description 接收选择一个用户快速登录的事件
-     * @param {Object} user 用户信息
-     */
-    handleUserBtnClick (user) {
-      this.formLogin.username = user.username
-      this.formLogin.password = user.password
-      this.submit()
+    handleUserBtnClick(user) {
+      this.formLogin.username = user.username;
+      this.formLogin.password = user.password;
+      this.submit();
     },
-    /**
-     * @description 提交表单
-     */
-    // 提交登录信息
-    submit () {
-      const that = this
+    submit() {
+      const that = this;
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
-          // 登录
-          // 注意 这里的演示没有传验证码
-          // 具体需要传递的数据请自行修改代码
           this.login({
             username: that.formLogin.username,
-            password: that.$md5(that.formLogin.password),
+            // password: that.$md5(that.formLogin.password),
+            password: that.formLogin.password,
             captcha: that.formLogin.captcha,
-            captchaKey: that.captchaKey
+            captchaKey: that.captchaKey,
           })
             .then(() => {
-              // 重定向对象不存在则返回顶层路径
-              this.$router.replace(this.$route.query.redirect || '/')
+              this.$router.replace(this.$route.query.redirect || "/");
             })
             .catch(() => {
-              this.getCaptcha()
-            })
+              this.getCaptcha();
+            });
         } else {
-          // 登录表单校验失败
-          this.$message.error('表单校验失败，请检查')
+          this.$message.error("表单校验失败，请检查");
         }
-      })
+      });
     },
-    /**
-     * 获取验证码
-     */
-    getCaptcha () {
+    getCaptcha() {
       api.getCaptcha().then((ret) => {
-        this.formLogin.captcha = null
-        this.captchaKey = ret.data.data.key
-        this.image_base = ret.data.data.image_base
-      })
-    }
+        this.formLogin.captcha = null;
+        this.captchaKey = ret.data.data.key;
+        this.image_base = ret.data.data.image_base;
+      });
+    },
   },
-  created () {
-    this.$store.dispatch('d2admin/db/databaseClear')
-    this.getCaptcha()
-  }
-}
+  created() {
+    this.$store.dispatch("d2admin/db/databaseClear");
+    this.getCaptcha();
+  },
+};
 </script>
 
 <style lang="scss">
 .page-login {
   @extend %unable-select;
   $backgroundColor: #f0f2f5;
-  // ---
   background-color: $backgroundColor;
   height: 100%;
   position: relative;
-  // 层
   .page-login--layer {
     @extend %full;
     overflow: auto;
@@ -286,19 +264,16 @@ export default {
   .page-login--layer-area {
     overflow: hidden;
   }
-  // 时间
   .page-login--layer-time {
     font-size: 24em;
     font-weight: bold;
     color: rgba(0, 0, 0, 0.03);
     overflow: hidden;
   }
-  // 登陆页面控件的容器
   .page-login--content {
     height: 100%;
     min-height: 500px;
   }
-  // header
   .page-login--content-header {
     padding: 1em 0;
     .page-login--content-header-motto {
@@ -309,24 +284,19 @@ export default {
       font-size: 12px;
     }
   }
-  // main
   .page-login--logo {
     width: 240px;
     margin-bottom: 2em;
     margin-top: -2em;
   }
-  // 登录表单
   .page-login--form {
     width: 280px;
-    // 卡片
     .el-card {
       margin-bottom: 15px;
     }
-    // 登录按钮
     .button-login {
       width: 100%;
     }
-    // 输入框左边的图表区域缩窄
     .el-input-group__prepend {
       padding: 0px 14px;
     }
@@ -337,7 +307,6 @@ export default {
       border-top-right-radius: 2px;
       border-bottom-right-radius: 2px;
     }
-    // 登陆选项
     .page-login--options {
       margin: 0px;
       padding: 0px;
@@ -350,7 +319,6 @@ export default {
       width: 100%;
     }
   }
-  // 快速选择用户面板
   .page-login--quick-user {
     @extend %flex-center-col;
     padding: 10px 0px;
@@ -374,7 +342,6 @@ export default {
       color: $color-text-sub;
     }
   }
-  // footer
   .page-login--content-footer {
     padding: 1em 0;
     .page-login--content-footer-locales {
@@ -417,7 +384,6 @@ export default {
       }
     }
   }
-  // 背景
   .circles {
     position: absolute;
     top: 0;

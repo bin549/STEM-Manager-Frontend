@@ -8,16 +8,16 @@ export default {
   mixins: [
     menuMixin
   ],
-  render (h) {
+  render(h) {
     return <div class="d2-layout-header-aside-menu-side">
       <el-menu
-        collapse={ this.asideCollapse }
-        collapseTransition={ this.asideTransition }
-        uniqueOpened={ true }
-        defaultActive={ this.$route.fullPath }
+        collapse={this.asideCollapse}
+        collapseTransition={this.asideTransition}
+        uniqueOpened={true}
+        defaultActive={this.$route.fullPath}
         ref="menu"
-        onSelect={ this.handleMenuSelect }>
-        { this.aside.map(menu => createMenu.call(this, h, menu)) }
+        onSelect={this.handleMenuSelect}>
+        {this.aside.map(menu => createMenu.call(this, h, menu))}
       </el-menu>
       {
         this.aside.length === 0 && !this.asideCollapse
@@ -29,7 +29,7 @@ export default {
       }
     </div>
   },
-  data () {
+  data() {
     return {
       asideHeight: 300,
       BS: null
@@ -44,21 +44,21 @@ export default {
   },
   watch: {
     // 折叠和展开菜单的时候销毁 better scroll
-    asideCollapse (val) {
+    asideCollapse(val) {
       this.scrollDestroy()
       setTimeout(() => {
         this.scrollInit()
       }, 500)
     }
   },
-  mounted () {
+  mounted() {
     this.scrollInit()
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.scrollDestroy()
   },
   methods: {
-    scrollInit () {
+    scrollInit() {
       this.BS = new BScroll(this.$el, {
         mouseWheel: true,
         click: true
@@ -69,7 +69,7 @@ export default {
         // }
       })
     },
-    scrollDestroy () {
+    scrollDestroy() {
       // https://github.com/d2-projects/d2-admin/issues/75
       try {
         this.BS.destroy()

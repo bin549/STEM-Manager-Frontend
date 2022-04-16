@@ -1,9 +1,4 @@
 /*
- * @创建文件时间: 2021-06-01 22:41:21
- * @Auther: 猿小天
- * @最后修改人: 猿小天
- * @最后修改时间: 2021-07-29 19:23:33
- * 联系Qq:1638245306
  * @文件介绍: 菜单管理接口
  */
 import { request } from '@/api/service'
@@ -14,7 +9,7 @@ export const urlPrefix = '/api/system/menu/'
 /**
  * 列表查询
  */
-export function GetList (query) {
+export function GetList(query) {
   query.limit = 999
   return request({
     url: urlPrefix,
@@ -30,7 +25,7 @@ export function GetList (query) {
 /**
  * 新增
  */
-export function createObj (obj) {
+export function createObj(obj) {
   return request({
     url: urlPrefix,
     method: 'post',
@@ -41,7 +36,7 @@ export function createObj (obj) {
 /**
  * 修改
  */
-export function UpdateObj (obj) {
+export function UpdateObj(obj) {
   return request({
     url: urlPrefix + obj.id + '/',
     method: 'put',
@@ -52,7 +47,7 @@ export function UpdateObj (obj) {
 /**
  * 删除
  */
-export function DelObj (id) {
+export function DelObj(id) {
   return request({
     url: urlPrefix + id + '/',
     method: 'delete',

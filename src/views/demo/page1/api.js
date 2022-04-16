@@ -1,6 +1,6 @@
 import { request } from '@/api/service'
 
-export function GetList (query) {
+export function GetList(query) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
@@ -23,7 +23,7 @@ export function GetList (query) {
     })
   })
 }
-export function AddObj (obj) {
+export function AddObj(obj) {
   return request({
     url: '/select/add',
     method: 'post',
@@ -31,21 +31,21 @@ export function AddObj (obj) {
   })
 }
 
-export function UpdateObj (obj) {
+export function UpdateObj(obj) {
   return request({
     url: '/select/update',
     method: 'post',
     data: obj
   })
 }
-export function DelObj (id) {
+export function DelObj(id) {
   return request({
     url: '/select/delete',
     method: 'post',
     data: { id }
   })
 }
-export function GetCascadeData () {
+export function GetCascadeData() {
   return request({
     url: '/select/cascadeData',
     method: 'get'

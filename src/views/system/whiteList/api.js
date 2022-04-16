@@ -3,7 +3,7 @@ import { request } from '@/api/service'
 
 export const urlPrefix = '/api/system/api_white_list/'
 
-export function GetList (query) {
+export function GetList(query) {
   return request({
     url: urlPrefix,
     method: 'get',
@@ -11,7 +11,7 @@ export function GetList (query) {
   })
 }
 
-export function createObj (obj, id) {
+export function createObj(obj, id) {
   const data = { ...obj, menu: id }
   return request({
     url: urlPrefix,
@@ -20,7 +20,7 @@ export function createObj (obj, id) {
   })
 }
 
-export function UpdateObj (obj) {
+export function UpdateObj(obj) {
   return request({
     url: urlPrefix + obj.id + '/',
     method: 'put',
@@ -28,7 +28,7 @@ export function UpdateObj (obj) {
   })
 }
 
-export function DelObj (id) {
+export function DelObj(id) {
   return request({
     url: urlPrefix + id + '/',
     method: 'delete',

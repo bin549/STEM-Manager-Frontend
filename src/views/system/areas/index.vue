@@ -15,15 +15,15 @@
           :options="crud.searchOptions"
           @submit="handleSearch"
         />
-<!--        <el-button-group>-->
-<!--          <el-button-->
-<!--            size="small"-->
-<!--            v-permission="'Create'"-->
-<!--            type="primary"-->
-<!--            @click="addRow"-->
-<!--            ><i class="el-icon-plus" /> 新增</el-button-->
-<!--          >-->
-<!--        </el-button-group>-->
+        <!--        <el-button-group>-->
+        <!--          <el-button-->
+        <!--            size="small"-->
+        <!--            v-permission="'Create'"-->
+        <!--            type="primary"-->
+        <!--            @click="addRow"-->
+        <!--            ><i class="el-icon-plus" /> 新增</el-button-->
+        <!--          >-->
+        <!--        </el-button-group>-->
         <crud-toolbar
           :search.sync="crud.searchOptions.show"
           :compact.sync="crud.pageOptions.compact"
@@ -37,24 +37,24 @@
 </template>
 
 <script>
-import * as api from './api'
-import { crudOptions } from './crud'
-import { d2CrudPlus } from 'd2-crud-plus'
+import * as api from "./api";
+import { crudOptions } from "./crud";
+import { d2CrudPlus } from "d2-crud-plus";
 
 export default {
-  name: 'areas',
+  name: "areas",
 
   mixins: [d2CrudPlus.crud],
-  data () {
-    return {}
+  data() {
+    return {};
   },
   methods: {
-    getCrudOptions () {
-      return crudOptions(this)
+    getCrudOptions() {
+      return crudOptions(this);
     },
-    pageRequest (query) {
-      return api.GetList(query)
-    }
+    pageRequest(query) {
+      return api.GetList(query);
+    },
     // addRequest (row) {
     //   console.log('api', api)
     //   return api.AddObj(row)
@@ -66,8 +66,8 @@ export default {
     // delRequest (row) {
     //   return api.DelObj(row.id)
     // }
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">

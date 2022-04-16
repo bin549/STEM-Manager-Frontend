@@ -12,7 +12,7 @@ import qs from 'qs'
 axios.defaults.retry = 1
 axios.defaults.retryDelay = 1000
 
-export function getErrorMessage (msg) {
+export function getErrorMessage(msg) {
   if (typeof msg === 'string') {
     return msg
   }
@@ -39,8 +39,7 @@ export function getErrorMessage (msg) {
   return msg
 }
 
-function createService () {
-  // 创建一个 axios 实例
+function createService() {
   const service = axios.create({
     baseURL: process.env.VUE_APP_API_URL,
     timeout: 20000,
@@ -50,7 +49,6 @@ function createService () {
   service.interceptors.request.use(
     config => config,
     error => {
-      // 发送失败
       console.log(error)
       return Promise.reject(error)
     }
@@ -158,7 +156,7 @@ function createService () {
  * @description 创建请求方法
  * @param {Object} service axios 实例
  */
-function createRequestFunction (service) {
+function createRequestFunction(service) {
   // 校验是否为租户模式。租户模式把域名替换成 域名 加端口
   return function (config) {
     const token = util.cookies.get('token')
@@ -197,7 +195,6 @@ export const requestForMock = createRequestFunction(serviceForMock)
 // 网络请求数据模拟工具
 export const mock = new Adapter(serviceForMock)
 
-// 刷新token
 const refreshTken = function () {
   const refresh = util.cookies.get('refresh')
   return request({
@@ -209,12 +206,6 @@ const refreshTken = function () {
   })
 }
 
-/**
- * 下载文件
- * @param url
- * @param params
- * @param filename
- */
 export const downloadFile = function ({ url, data, method, filename }) {
   request({
     url: url,

@@ -3,6 +3,7 @@ import { BUTTON_STATUS_BOOL, BUTTON_WHETHER_BOOL, BUTTON_VALUE_TO_COLOR_MAPPING 
 import { urlPrefix as menuPrefix } from './api'
 import { urlPrefix as buttonPrefix } from '../button/api'
 import XEUtils from 'xe-utils'
+
 export const crudOptions = (vm) => {
   // 验证路由地址
   const validateWebPath = (rule, value, callback) => {
@@ -33,34 +34,34 @@ export const crudOptions = (vm) => {
       view: {
         thin: true,
         text: '',
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Retrieve')
         }
       },
       edit: {
         thin: true,
         text: '',
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Update')
         }
       },
       remove: {
         thin: true,
         text: '',
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Delete')
         }
       },
       width: 230,
       fixed: 'right',
       custom: [{
-        show (index, row) {
+        show(index, row) {
           if (row.web_path && !row.is_link) {
             return true
           }
           return false
         },
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Update')
         },
         text: ' 菜单按钮',
@@ -242,19 +243,19 @@ export const crudOptions = (vm) => {
         form: {
           value: false,
           component: {
-            show (context) {
+            show(context) {
               const { form } = context
               return !form.is_catalog
             },
             placeholder: '请选择是否外链接'
           },
-          valueChange (key, value, form, { getColumn, mode, component, immediate, getComponent }) {
+          valueChange(key, value, form, { getColumn, mode, component, immediate, getComponent }) {
             form.web_path = null
             if (value) {
               getColumn('web_path').title = '外链接地址'
               getColumn('web_path').component.placeholder = '请输入外链接地址'
               getColumn('web_path').helper = {
-                render (h) {
+                render(h) {
                   return (< el-alert title="外链接地址,请以https|http|ftp|rtsp|mms开头" type="warning" />
                   )
                 }
@@ -263,7 +264,7 @@ export const crudOptions = (vm) => {
               getColumn('web_path').title = '路由地址'
               getColumn('web_path').component.placeholder = '请输入路由地址'
               getColumn('web_path').helper = {
-                render (h) {
+                render(h) {
                   return (< el-alert title="浏览器中url的地址,请以/开头" type="warning" />
                   )
                 }
@@ -283,7 +284,7 @@ export const crudOptions = (vm) => {
             { validator: validateWebPath, trigger: 'change' }
           ],
           component: {
-            show (context) {
+            show(context) {
               const { form } = context
               return !form.is_catalog
             },
@@ -293,7 +294,7 @@ export const crudOptions = (vm) => {
             placeholder: '请输入路由地址'
           },
           helper: {
-            render (h) {
+            render(h) {
               return (< el-alert title="浏览器中url的地址,请以/开头" type="warning" />
               )
             }
@@ -314,7 +315,7 @@ export const crudOptions = (vm) => {
             { required: true, message: '请选择组件地址' }
           ],
           component: {
-            show (context) {
+            show(context) {
               const { form } = context
               return !form.is_catalog && !form.is_link
             },
@@ -325,7 +326,7 @@ export const crudOptions = (vm) => {
             placeholder: '请输入组件地址'
           },
           helper: {
-            render (h) {
+            render(h) {
               return (< el-alert title="src/views下的文件夹地址" type="warning" />
               )
             }
@@ -341,7 +342,7 @@ export const crudOptions = (vm) => {
             { required: true, message: '请输入组件名称' }
           ],
           component: {
-            show (context) {
+            show(context) {
               const { form } = context
               return !form.is_catalog && !form.is_link
             },
@@ -351,7 +352,7 @@ export const crudOptions = (vm) => {
             placeholder: '请输入组件名称'
           },
           helper: {
-            render (h) {
+            render(h) {
               return (< el-alert title="xx.vue文件中的name" type="warning" />
               )
             }
@@ -400,14 +401,14 @@ export const crudOptions = (vm) => {
         form: {
           value: false,
           component: {
-            show (context) {
+            show(context) {
               const { form } = context
               return !form.is_catalog
             },
             placeholder: '请选择是否缓存'
           },
           helper: {
-            render (h) {
+            render(h) {
               return (< el-alert title="是否开启页面缓存,需要组件名称和xx.vue页面的name一致" type="warning" />
               )
             }
@@ -431,7 +432,7 @@ export const crudOptions = (vm) => {
             placeholder: '请选择侧边可见'
           },
           helper: {
-            render (h) {
+            render(h) {
               return (< el-alert title="是否显示在侧边菜单中" type="warning" />
               )
             }

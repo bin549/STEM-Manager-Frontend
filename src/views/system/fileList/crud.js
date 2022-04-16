@@ -13,21 +13,21 @@ export const crudOptions = (vm) => {
       view: {
         thin: true,
         text: '',
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Retrieve')
         }
       },
       edit: {
         thin: true,
         text: '',
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Update')
         }
       },
       remove: {
         thin: true,
         text: '',
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Delete')
         }
       }
@@ -89,7 +89,7 @@ export const crudOptions = (vm) => {
           disabled: true
         },
         width: 220,
-        valueBuilder (row, key) {
+        valueBuilder(row, key) {
           console.log(row, key)
           row.url = `${util.baseURL()}media/${row.url}`
         }
@@ -104,7 +104,7 @@ export const crudOptions = (vm) => {
         form: {
           disabled: false
         },
-        valueResolve (row, col) {
+        valueResolve(row, col) {
           const value = row[col.key]
           if (value != null && value instanceof Array) {
             if (value.length >= 0) {

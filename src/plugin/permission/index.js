@@ -1,9 +1,8 @@
 import store from '@/store'
-
 import Vue from 'vue'
 import permissionDirective from './directive/permission'
 
-function isInited () {
+function isInited() {
   if (!isEnabled) {
     console.warn('PM is disabled')
     return true

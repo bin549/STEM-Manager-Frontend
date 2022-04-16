@@ -3,7 +3,6 @@ import screenfull from 'screenfull'
 export default {
   namespaced: true,
   state: {
-    // 全屏激活
     active: false
   },
   actions: {
@@ -11,18 +10,14 @@ export default {
      * @description 初始化监听
      * @param {Object} context
      */
-    listen ({ commit }) {
+    listen({ commit }) {
       if (screenfull.isEnabled) {
         screenfull.on('change', () => {
           if (!screenfull.isFullscreen) commit('set', false)
         })
       }
     },
-    /**
-     * @description 切换全屏
-     * @param {Object} context
-     */
-    toggle ({ commit }) {
+    toggle({ commit }) {
       if (screenfull.isFullscreen) {
         screenfull.exit()
         commit('set', false)
@@ -38,7 +33,7 @@ export default {
      * @param {Object} state state
      * @param {Boolean} active active
      */
-    set (state, active) {
+    set(state, active) {
       state.active = active
     }
   }

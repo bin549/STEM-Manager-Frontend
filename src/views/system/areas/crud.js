@@ -38,7 +38,7 @@ export const crudOptions = (vm) => {
         thin: true,
         text: '',
         show: false,
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Retrieve')
         }
       },
@@ -46,7 +46,7 @@ export const crudOptions = (vm) => {
         thin: true,
         text: '',
         show: false,
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Update')
         }
       },
@@ -54,7 +54,7 @@ export const crudOptions = (vm) => {
         thin: true,
         text: '',
         show: false,
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Delete')
         }
       }

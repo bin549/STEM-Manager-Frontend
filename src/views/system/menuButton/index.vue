@@ -1,8 +1,4 @@
 <!--
- * @创建文件时间: 2021-06-01 22:41:21
- * @Auther: 猿小天
- * @最后修改人: 猿小天
- * @最后修改时间: 2021-07-29 22:51:07
  * 联系Qq:1638245306
  * @文件介绍: 菜单按钮管理(由菜单的自定义权限进入)
 -->
@@ -23,9 +19,8 @@
         />
         <el-button-group>
           <el-button size="small" type="primary" @click="addRow"
-          ><i class="el-icon-plus"/> 新增
-          </el-button
-          >
+            ><i class="el-icon-plus" /> 新增
+          </el-button>
         </el-button-group>
         <crud-toolbar
           :search.sync="crud.searchOptions.show"
@@ -49,40 +44,41 @@
 </template>
 
 <script>
-import * as api from './api'
-import { crudOptions } from './crud'
-import { d2CrudPlus } from 'd2-crud-plus'
-import router from '@/router'
+import * as api from "./api";
+import { crudOptions } from "./crud";
+import { d2CrudPlus } from "d2-crud-plus";
+import router from "@/router";
+
 export default {
-  name: 'menuButton',
+  name: "menuButton",
   mixins: [d2CrudPlus.crud],
-  data () {
-    return {}
+  data() {
+    return {};
   },
   methods: {
-    getCrudOptions () {
-      return crudOptions(this)
+    getCrudOptions() {
+      return crudOptions(this);
     },
-    pageRequest (query) {
-      const menuId = this.$route.params.id
-      return api.GetList({ ...query, menu: menuId })
+    pageRequest(query) {
+      const menuId = this.$route.params.id;
+      return api.GetList({ ...query, menu: menuId });
     },
-    addRequest (row) {
-      const menuId = this.$route.params.id
-      return api.createObj(row, menuId)
+    addRequest(row) {
+      const menuId = this.$route.params.id;
+      return api.createObj(row, menuId);
     },
-    updateRequest (row) {
-      return api.UpdateObj(row)
+    updateRequest(row) {
+      return api.UpdateObj(row);
     },
-    delRequest (row) {
-      return api.DelObj(row.id)
+    delRequest(row) {
+      return api.DelObj(row.id);
     },
     // 跳转到添加按钮界面
-    onLinkBtn () {
-      router.push({ path: '/button' })
-    }
-  }
-}
+    onLinkBtn() {
+      router.push({ path: "/button" });
+    },
+  },
+};
 </script>
 
 <style lang="scss">

@@ -3,46 +3,47 @@
     v-if="show"
     class="d2-source"
     :class="{ 'd2-source--active': isActive }"
-    @click="handleClick">
-    <d2-icon name="code"/> 本页源码
+    @click="handleClick"
+  >
+    <d2-icon name="code" /> 本页源码
   </div>
 </template>
 
 <script>
-import { last, get } from 'lodash'
+import { last, get } from "lodash";
 export default {
-  data () {
+  data() {
     return {
       isActive: false,
-      path: ''
-    }
+      path: "",
+    };
   },
   computed: {
-    show () {
-      return process.env.VUE_APP_SCOURCE_LINK === 'TRUE'
-    }
+    show() {
+      return process.env.VUE_APP_SCOURCE_LINK === "TRUE";
+    },
   },
   watch: {
     $route: {
-      handler (to) {
-        this.path = get(last(to.matched), 'components.default.__source')
+      handler(to) {
+        this.path = get(last(to.matched), "components.default.__source");
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
-  mounted () {
+  mounted() {
     // 一秒后显示按钮
     setTimeout(() => {
-      this.isActive = true
-    }, 500)
+      this.isActive = true;
+    }, 500);
   },
   methods: {
     // 点击按钮的时候跳转到源代码
-    handleClick () {
-      this.$open(`${process.env.VUE_APP_REPO}/blob/master/${this.path}`)
-    }
-  }
-}
+    handleClick() {
+      this.$open(`${process.env.VUE_APP_REPO}/blob/master/${this.path}`);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -55,7 +56,7 @@ export default {
   opacity: 0;
   position: fixed;
   z-index: 9999;
-  right: - $borderRadius - $rightOuter;
+  right: -$borderRadius - $rightOuter;
   bottom: 20px;
   font-size: $fontSize;
   line-height: $fontSize;
@@ -63,17 +64,17 @@ export default {
   border-radius: $borderRadius;
   padding: $paddingTB $paddingLR;
   padding-right: $borderRadius + $paddingLR;
-  background-color: rgba(#000, .7);
+  background-color: rgba(#000, 0.7);
   border: 1px solid #000;
-  color: #FFF;
-  transition: all .3s;
+  color: #fff;
+  transition: all 0.3s;
   @extend %unable-select;
   &.d2-source--active {
     opacity: 1;
   }
   &:hover {
-    right: - $borderRadius;
-    background-color: rgba(#000, .9);
+    right: -$borderRadius;
+    background-color: rgba(#000, 0.9);
   }
 }
 </style>

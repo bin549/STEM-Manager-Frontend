@@ -9,13 +9,12 @@ export const crudOptions = (vm) => {
       rowId: 'id',
       height: '100%', // 表格高度100%, 使用toolbar必须设置
       highlightCurrentRow: false
-
     },
     rowHandle: {
       view: {
         thin: true,
         text: '详情',
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Retrieve')
         }
       },
@@ -24,7 +23,7 @@ export const crudOptions = (vm) => {
         thin: true,
         text: '',
         show: false,
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Update')
         }
       },
@@ -32,7 +31,7 @@ export const crudOptions = (vm) => {
         thin: true,
         text: '删除',
         show: false,
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Delete')
         }
       }

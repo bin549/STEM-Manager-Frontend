@@ -12,7 +12,7 @@
                 type="primary"
                 size="small"
                 icon="el-icon-folder-add"
-                @click="tabsDrawer=true"
+                @click="tabsDrawer = true"
               >
                 添加分组
               </el-button>
@@ -20,7 +20,7 @@
                 size="small"
                 type="warning"
                 icon="el-icon-edit-outline"
-                @click="contentDrawer=true"
+                @click="contentDrawer = true"
               >
                 添加内容
               </el-button>
@@ -58,51 +58,49 @@
         :label="item.title"
         :name="item.key"
       >
-        <formContent  :options="item" :editableTabsItem="item"></formContent>
+        <formContent :options="item" :editableTabsItem="item"></formContent>
       </el-tab-pane>
     </el-tabs>
   </d2-container>
 </template>
 
 <script>
-import addTabs from './components/addTabs'
-import * as api from './api'
-import addContent from './components/addContent'
-import formContent from './components/formContent'
+import addTabs from "./components/addTabs";
+import * as api from "./api";
+import addContent from "./components/addContent";
+import formContent from "./components/formContent";
 
 export default {
-  name: 'config',
+  name: "config",
   components: {
     addTabs,
     addContent,
-    formContent
+    formContent,
   },
-  data () {
+  data() {
     return {
       tabsDrawer: false,
       contentDrawer: false,
-      editableTabsValue: 'basic',
+      editableTabsValue: "basic",
       editableTabs: [],
-      tabIndex: 2
-    }
+      tabIndex: 2,
+    };
   },
   methods: {
-    getTabs () {
-      api.GetList({
-        limit: 999,
-        parent__isnull: true
-      }).then(res => {
-        const { data } = res.data
-        this.editableTabs = data
-      })
-    }
+    getTabs() {
+      api
+        .GetList({
+          limit: 999,
+          parent__isnull: true,
+        })
+        .then((res) => {
+          const { data } = res.data;
+          this.editableTabs = data;
+        });
+    },
   },
-  created () {
-    this.getTabs()
-  }
-}
+  created() {
+    this.getTabs();
+  },
+};
 </script>
-
-<style scoped>
-
-</style>

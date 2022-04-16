@@ -17,21 +17,21 @@ export const crudOptions = (vm) => {
       view: {
         thin: true,
         text: '',
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Retrieve')
         }
       },
       edit: {
         thin: true,
         text: '',
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Update')
         }
       },
       remove: {
         thin: true,
         text: '',
-        disabled () {
+        disabled() {
           return !vm.hasPermissions('Delete')
         }
       }
@@ -94,7 +94,7 @@ export const crudOptions = (vm) => {
             class: { yxtInput: true }
           },
           helper: {
-            render (h) {
+            render(h) {
               return (< el-alert title="密码默认为:admin123456" type="warning" />
               )
             }
@@ -279,7 +279,7 @@ export const crudOptions = (vm) => {
                   Authorization: 'JWT ' + util.cookies.get('token')
                 },
                 type: 'form',
-                successHandle (ret, option) {
+                successHandle(ret, option) {
                   if (ret.data == null || ret.data === '') {
                     throw new Error('上传失败')
                   }
@@ -296,7 +296,7 @@ export const crudOptions = (vm) => {
           },
           helper: '限制文件大小不能超过50k'
         },
-        valueResolve (row, col) {
+        valueResolve(row, col) {
           const value = row[col.key]
           if (value != null && value instanceof Array) {
             if (value.length >= 0) {
@@ -308,7 +308,7 @@ export const crudOptions = (vm) => {
         },
         component: {
           props: {
-            buildUrl (value, item) {
+            buildUrl(value, item) {
               console.log(11, value)
               if (value && value.indexOf('http') !== 0) {
                 return '/api/upload/form/download?key=' + value

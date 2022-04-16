@@ -1,9 +1,4 @@
 <!--
- * @创建文件时间: 2021-06-01 22:41:21
- * @Auther: 猿小天
- * @最后修改人: 猿小天
- * @最后修改时间: 2021-09-26 21:18:29
- * 联系Qq:1638245306
  * @文件介绍:授权管理
 -->
 <template>
@@ -14,12 +9,12 @@
         size="mini"
         @click="submitPermisson"
         v-permission="'Save'"
-      >保存
+        >保存
       </el-button>
     </div>
     <el-container style="height: 80vh; border: 1px solid #eee">
-      <el-aside width="300px" style="border:1px solid #eee;padding: 20px;">
-        <div style="margin: 10px;">
+      <el-aside width="300px" style="border: 1px solid #eee; padding: 20px">
+        <div style="margin: 10px">
           <div style="margin-bottom: 20px">
             <div class="yxt-flex-align-center">
               <div class="yxt-divider"></div>
@@ -62,11 +57,10 @@
               :props="{ label: 'name' }"
             ></el-tree>
           </div>
-
         </div>
       </el-aside>
       <el-main>
-        <div style="margin: 10px;">
+        <div style="margin: 10px">
           <div>
             <div style="margin-bottom: 20px">
               <div class="yxt-flex-align-center">
@@ -98,13 +92,15 @@
             >
               <span class="custom-tree-node" slot-scope="{ node, data }">
                 <div class="yxt-flex-between">
-                  <div :style="{width:((4-node.level)*18+100)+'px'}">{{ data.name }}</div>
+                  <div :style="{ width: (4 - node.level) * 18 + 100 + 'px' }">
+                    {{ data.name }}
+                  </div>
                   <div>
                     <el-checkbox
                       v-for="(item, index) in data.menuPermission"
                       :key="index"
                       v-model="item.checked"
-                    >{{ item.name }}</el-checkbox
+                      >{{ item.name }}</el-checkbox
                     >
                   </div>
                 </div>
@@ -119,26 +115,26 @@
 </template>
 
 <script>
-import * as api from './api'
-import * as deptApi from '../dept/api'
-import XEUtils from 'xe-utils'
+import * as api from "./api";
+import * as deptApi from "../dept/api";
+import XEUtils from "xe-utils";
 
 export default {
-  name: 'rolePermission',
+  name: "rolePermission",
   props: {
     roleObj: {
       type: Object,
-      default () {
+      default() {
         return {
           name: null,
-          data_range: null
-        }
-      }
-    }
+          data_range: null,
+        };
+      },
+    },
   },
-  data () {
+  data() {
     return {
-      filterText: '',
+      filterText: "",
       data: [],
       menuOptions: [],
       permissionData: [],
@@ -148,137 +144,137 @@ export default {
       dataScopeOptions: [
         {
           value: 0,
-          label: '仅本人数据权限'
+          label: "仅本人数据权限",
         },
         {
           value: 1,
-          label: '本部门及以下数据权限'
+          label: "本部门及以下数据权限",
         },
         {
           value: 2,
-          label: '本部门数据权限'
+          label: "本部门数据权限",
         },
         {
           value: 3,
-          label: '全部数据权限'
+          label: "全部数据权限",
         },
         {
           value: 4,
-          label: '自定数据权限'
-        }
+          label: "自定数据权限",
+        },
       ],
-      dataAuthorizationTips: '授权用户可操作的数据范围',
-      menuAuthorizationTips: '授权用户在菜单中可操作的范围'
-    }
+      dataAuthorizationTips: "授权用户可操作的数据范围",
+      menuAuthorizationTips: "授权用户在菜单中可操作的范围",
+    };
   },
   watch: {
-    filterText (val) {
-      this.$refs.tree.filter(val)
-    }
+    filterText(val) {
+      this.$refs.tree.filter(val);
+    },
   },
   methods: {
-    filterNode (value, data) {
-      if (!value) return true
-      return data.label.indexOf(value) !== -1
+    filterNode(value, data) {
+      if (!value) return true;
+      return data.label.indexOf(value) !== -1;
     },
-    getCrudOptions () {
+    getCrudOptions() {
       // eslint-disable-next-line no-undef
-      return crudOptions(this)
+      return crudOptions(this);
     },
-    pageRequest (query) {
-      return api.GetList(query).then(res => {
+    pageRequest(query) {
+      return api.GetList(query).then((res) => {
         res.map((value, index) => {
-          value.node_id = index
-        })
-        this.data = res
+          value.node_id = index;
+        });
+        this.data = res;
         this.$nextTick().then(() => {
-          this.initNode()
-        })
-      })
+          this.initNode();
+        });
+      });
     },
-    initNode () {
-      this.getDeptData()
-      this.getMenuData(this.roleObj)
-      this.menuCheckedKeys = this.roleObj.menu // 加载已勾选的菜单
-      this.deptCheckedKeys = this.roleObj.dept
+    initNode() {
+      this.getDeptData();
+      this.getMenuData(this.roleObj);
+      this.menuCheckedKeys = this.roleObj.menu; // 加载已勾选的菜单
+      this.deptCheckedKeys = this.roleObj.dept;
     },
-    addRequest (row) {
-      return api.createObj(row)
+    addRequest(row) {
+      return api.createObj(row);
     },
-    updateRequest (row) {
-      return api.UpdateObj(row)
+    updateRequest(row) {
+      return api.UpdateObj(row);
     },
-    delRequest (row) {
-      return api.DelObj(row.id)
+    delRequest(row) {
+      return api.DelObj(row.id);
     },
     // 获取部门数据
-    getDeptData () {
-      deptApi.GetList({ status: 1 }).then(ret => {
-        this.deptOptions = ret.data.data
-      })
+    getDeptData() {
+      deptApi.GetList({ status: 1 }).then((ret) => {
+        this.deptOptions = ret.data.data;
+      });
     },
     // 获取菜单数据
-    getMenuData (data) {
-      api.GetMenuData(data).then(res => {
-        res.forEach(x => {
+    getMenuData(data) {
+      api.GetMenuData(data).then((res) => {
+        res.forEach((x) => {
           // 根据当前角色的permission,对menuPermisson进行勾选处理
-          x.menuPermission.forEach(a => {
+          x.menuPermission.forEach((a) => {
             if (data.permission.indexOf(a.id) > -1) {
-              this.$set(a, 'checked', true)
+              this.$set(a, "checked", true);
             } else {
-              this.$set(a, 'checked', false)
+              this.$set(a, "checked", false);
             }
-          })
-        })
+          });
+        });
         // 将菜单列表转换为树形列表
         this.menuOptions = XEUtils.toArrayTree(res, {
-          parentKey: 'parent',
-          strict: true
-        })
-      })
+          parentKey: "parent",
+          strict: true,
+        });
+      });
     },
     // 所有勾选菜单节点数据
-    getMenuAllCheckedKeys () {
+    getMenuAllCheckedKeys() {
       // 目前被选中的菜单节点
-      const checkedKeys = this.$refs.menuTree.getCheckedKeys()
+      const checkedKeys = this.$refs.menuTree.getCheckedKeys();
       // 半选中的菜单节点
-      const halfCheckedKeys = this.$refs.menuTree.getHalfCheckedKeys()
-      checkedKeys.unshift.apply(checkedKeys, halfCheckedKeys)
-      return checkedKeys
+      const halfCheckedKeys = this.$refs.menuTree.getHalfCheckedKeys();
+      checkedKeys.unshift.apply(checkedKeys, halfCheckedKeys);
+      return checkedKeys;
     },
     // 所有自定义权限时,勾选的部门节点数据
-    getDeptAllCheckedKeys () {
+    getDeptAllCheckedKeys() {
       // 目前被选中的部门节点
-      const checkedKeys = this.$refs.dept.getCheckedKeys()
+      const checkedKeys = this.$refs.dept.getCheckedKeys();
       // 半选中的部门节点
-      const halfCheckedKeys = this.$refs.dept.getHalfCheckedKeys()
-      checkedKeys.unshift.apply(checkedKeys, halfCheckedKeys)
-      return checkedKeys
+      const halfCheckedKeys = this.$refs.dept.getHalfCheckedKeys();
+      checkedKeys.unshift.apply(checkedKeys, halfCheckedKeys);
+      return checkedKeys;
     },
     // 提交修改
-    submitPermisson () {
-      this.roleObj.menu = this.getMenuAllCheckedKeys() // 获取选中的菜单
-      this.roleObj.dept = this.getDeptAllCheckedKeys() // 获取选中的部门
-      const menuData = XEUtils.toTreeArray(this.menuOptions)
-      const permissionData = []
-      menuData.forEach(x => {
-        const checkedPermission = x.menuPermission.filter(f => {
-          return f.checked
-        })
+    submitPermisson() {
+      this.roleObj.menu = this.getMenuAllCheckedKeys(); // 获取选中的菜单
+      this.roleObj.dept = this.getDeptAllCheckedKeys(); // 获取选中的部门
+      const menuData = XEUtils.toTreeArray(this.menuOptions);
+      const permissionData = [];
+      menuData.forEach((x) => {
+        const checkedPermission = x.menuPermission.filter((f) => {
+          return f.checked;
+        });
 
         if (checkedPermission.length > 0) {
           for (const item of checkedPermission) {
-            permissionData.push(item.id)
+            permissionData.push(item.id);
           }
         }
-      })
-      this.roleObj.permission = permissionData
-      return this.updateRequest(this.roleObj).then(res => {
-        this.$message.success('更新成功')
-      })
+      });
+      this.roleObj.permission = permissionData;
+      return this.updateRequest(this.roleObj).then((res) => {
+        this.$message.success("更新成功");
+      });
     },
     /** 选择角色权限范围触发 */
-    dataScopeSelectChange (value) {
+    dataScopeSelectChange(value) {
       if (value !== 4) {
         // this.$refs.dept.setCheckedKeys([]);
       }
@@ -287,25 +283,22 @@ export default {
      * 菜单树点击,全选权限部分数据
      * @param data
      */
-    handleCheckClick (data, checked) {
-      const {
-        menuPermission,
-        children
-      } = data
+    handleCheckClick(data, checked) {
+      const { menuPermission, children } = data;
       for (const item of menuPermission) {
-        this.$set(item, 'checked', checked)
+        this.$set(item, "checked", checked);
       }
       if (children) {
         for (const item of children) {
-          this.$refs.menuTree.setChecked(item.id, checked)
+          this.$refs.menuTree.setChecked(item.id, checked);
         }
       }
-    }
+    },
   },
-  created () {
-    this.pageRequest()
-  }
-}
+  created() {
+    this.pageRequest();
+  },
+};
 </script>
 
 <style lang="scss">
@@ -334,9 +327,8 @@ export default {
 
   .el-tree-node {
     .el-tree-node__children {
-      overflow: visible !important
+      overflow: visible !important;
     }
   }
 }
-
 </style>

@@ -1,36 +1,24 @@
-/*
- * @创建文件时间: 2021-06-01 22:41:21
- * @Auther: 猿小天
- * @最后修改人: 猿小天
- * @最后修改时间: 2021-11-19 21:49:43
- * 联系Qq:1638245306
- * @文件介绍:
- */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// 进度条
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-
 import store from '@/store/index'
 import util from '@/libs/util.js'
-// 路由数据
 import routes from './routes'
 import { getMenu, handleAsideMenu, handleRouter, checkRouter } from '@/menu'
 
 // fix vue-router NavigationDuplicated
 const VueRouterPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push (location) {
+VueRouter.prototype.push = function push(location) {
   return VueRouterPush.call(this, location).catch(err => err)
 }
 const VueRouterReplace = VueRouter.prototype.replace
-VueRouter.prototype.replace = function replace (location) {
+VueRouter.prototype.replace = function replace(location) {
   return VueRouterReplace.call(this, location).catch(err => err)
 }
 
 Vue.use(VueRouter)
 
-// 导出路由 在 main.js 里使用
 const router = new VueRouter({
   routes
 })
@@ -63,7 +51,6 @@ router.beforeEach(async (to, from, next) => {
         const routes = handleRouter(ret)
         // 处理路由 得到每一级的路由设置
         store.commit('d2admin/page/init', routes)
-
         router.addRoutes(routes)
         const menu = handleAsideMenu(ret)
         const aside = handleAsideMenu(ret.filter(value => value.visible === true))
@@ -94,11 +81,8 @@ router.beforeEach(async (to, from, next) => {
 })
 
 router.afterEach(to => {
-  // 进度条
   NProgress.done()
-  // 多页控制 打开新的页面
   store.dispatch('d2admin/page/open', to)
-  // 更改标题
   util.title(to.meta.title)
 })
 

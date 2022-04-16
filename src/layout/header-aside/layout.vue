@@ -64,26 +64,21 @@
         >
           <d2-menu-side />
         </div>
-        <!-- 主体 -->
         <div class="d2-theme-container-main" flex-box="1" flex>
-          <!-- 搜索 -->
           <transition name="fade-scale">
             <div v-if="searchActive" class="d2-theme-container-main-layer" flex>
               <d2-panel-search ref="panelSearch" @close="searchPanelClose" />
             </div>
           </transition>
-          <!-- 内容 -->
           <transition name="fade-scale">
             <div
               v-if="!searchActive"
               class="d2-theme-container-main-layer"
               flex="dir:top"
             >
-              <!-- tab -->
               <div class="d2-theme-container-main-header" flex-box="0">
                 <d2-tabs />
               </div>
-              <!-- 页面 -->
               <div class="d2-theme-container-main-body" flex-box="1">
                 <transition :name="transitionActive ? 'fade-transverse' : ''">
                   <keep-alive :include="keepAlive" v-if="showView">
@@ -113,6 +108,7 @@ import d2HeaderLog from './components/header-log'
 import d2HeaderColor from './components/header-color'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import mixinSearch from './mixins/search'
+
 export default {
   name: 'd2-layout-header-aside',
   mixins: [mixinSearch],

@@ -16,56 +16,55 @@
 </template>
 
 <script>
-import * as api from '../api'
+import * as api from "../api";
 
 export default {
-  name: 'addTabs',
-  inject: ['refreshView'],
-  data () {
+  name: "addTabs",
+  inject: ["refreshView"],
+  data() {
     return {
       form: {
         title: null,
-        key: null
+        key: null,
       },
       rules: {
         title: [
           {
             required: true,
-            message: '请输入'
-          }
+            message: "请输入",
+          },
         ],
         key: [
           {
             required: true,
-            message: '请输入'
+            message: "请输入",
           },
           {
             pattern: /^[A-Za-z0-9]+$/,
-            message: '只能是英文和数字'
-          }
-        ]
-      }
-    }
+            message: "只能是英文和数字",
+          },
+        ],
+      },
+    };
   },
   methods: {
-    onSubmit () {
-      const that = this
+    onSubmit() {
+      const that = this;
       that.$refs.form.validate((valid) => {
         if (valid) {
-          api.createObj(that.form).then(res => {
-            this.$message.success('新增成功')
-            this.refreshView()
-          })
+          api.createObj(that.form).then((res) => {
+            this.$message.success("新增成功");
+            this.refreshView();
+          });
         } else {
-          console.log('error submit!!')
-          return false
+          console.log("error submit!!");
+          return false;
         }
-      })
-    }
-  }
-}
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 </style>

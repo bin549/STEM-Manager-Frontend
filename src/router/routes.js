@@ -3,15 +3,11 @@ import layoutHeaderAside from '@/layout/header-aside'
 // 由于懒加载页面太多的话会造成webpack热更新太慢，所以开发环境不使用懒加载，只有生产环境使用懒加载
 const _import = require('@/libs/util.import.' + process.env.NODE_ENV)
 
-/**
- * 在主框架内显示
- */
 const frameIn = [{
   path: '/',
   redirect: { name: 'index' },
   component: layoutHeaderAside,
   children: [
-    // 控制台
     {
       path: 'index',
       name: 'index',
@@ -29,7 +25,6 @@ const frameIn = [{
       },
       component: () => import('@/layout/header-aside/components/header-user/userinfo')
     },
-    // 演示页面
     {
       path: 'page1',
       name: 'page1',
@@ -57,7 +52,6 @@ const frameIn = [{
       },
       component: _import('demo/page3')
     },
-    // dashboard 工作台
     {
       path: 'workbench',
       name: 'workbench',
@@ -67,16 +61,15 @@ const frameIn = [{
       },
       component: _import('dashboard/workbench')
     },
-    // // 系统 菜单
-    // {
-    //   path: 'menu',
-    //   name: 'menu',
-    //   meta: {
-    //     title: '菜单',
-    //     auth: true
-    //   },
-    //   component: _import('system/menu')
-    // },
+    {
+      path: 'menu',
+      name: 'menu',
+      meta: {
+        title: '菜单',
+        auth: true
+      },
+      component: _import('system/menu')
+    },
     // // 系统 用户
     // {
     //   path: 'user',
@@ -138,16 +131,15 @@ const frameIn = [{
     //   },
     //   component: _import('system/dept')
     // },
-    // // 系统 操作日志
-    // {
-    //   path: 'operationLog',
-    //   name: 'operationLog',
-    //   meta: {
-    //     title: '操作日志',
-    //     auth: true
-    //   },
-    //   component: _import('system/log/operationLog')
-    // },
+    {
+      path: 'operationLog',
+      name: 'operationLog',
+      meta: {
+        title: '操作日志',
+        auth: true
+      },
+      component: _import('system/log/operationLog')
+    },
     // 系统 前端日志
     {
       path: 'frontendLog',
@@ -158,28 +150,29 @@ const frameIn = [{
       },
       component: _import('system/log/frontendLog')
     },
-    // 刷新页面 必须保留
     {
       path: 'refresh',
       name: 'refresh',
       hidden: true,
       component: _import('system/function/refresh')
     },
-    // 页面重定向 必须保留
     {
       path: 'redirect/:route*',
       name: 'redirect',
       hidden: true,
       component: _import('system/function/redirect')
+    },
+    {
+      path: 'course/:route*',
+      name: 'course',
+      hidden: true,
+      component: _import('course/index')
     }
   ]
 }]
 
-/**
- * 在主框架之外显示
- */
+
 const frameOut = [
-  // 登录
   {
     path: '/login',
     name: 'login',
@@ -187,9 +180,6 @@ const frameOut = [
   }
 ]
 
-/**
- * 错误页面
- */
 const errorPage = [{
   path: '*',
   name: '404',

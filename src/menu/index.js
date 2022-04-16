@@ -1,11 +1,3 @@
-/*
- * @创建文件时间: 2021-06-01 22:41:21
- * @Auther: 猿小天
- * @最后修改人: 猿小天
- * @最后修改时间: 2021-11-19 21:35:56
- * 联系Qq:1638245306
- * @文件介绍: 菜单获取
- */
 import { uniqueId } from 'lodash'
 import { request } from '@/api/service'
 import XEUtils from 'xe-utils'
@@ -17,7 +9,7 @@ const pluginImport = require('@/libs/util.import.plugin')
  * @description https://github.com/d2-projects/d2-admin/issues/209
  * @param {Array} menu 原始的菜单数据
  */
-function supplementPath (menu) {
+function supplementPath(menu) {
   return menu.map(e => ({
     ...e,
     path: e.path || uniqueId('d2-menu-empty-'),
@@ -81,9 +73,6 @@ export const getMenu = function () {
   })
 }
 
-/**
- * 校验路由是否有效
- */
 export const checkRouter = function (menuData) {
   const result = []
   for (const item of menuData) {

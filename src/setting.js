@@ -32,11 +32,11 @@ export default {
   // 注册的主题
   theme: {
     list: [
-      {
-        title: 'd2admin 经典',
-        name: 'd2',
-        preview: 'image/theme/d2/preview@2x.png'
-      }
+      // {
+      //   title: 'd2admin 经典',
+      //   name: 'd2',
+      //   preview: 'image/theme/d2/preview@2x.png'
+      // }
       // {
       //   title: 'Chester',
       //   name: 'chester',
@@ -52,12 +52,12 @@ export default {
       //   name: 'violet',
       //   preview: 'image/theme/violet/preview@2x.png'
       // },
-      // {
-      //   title: '简约线条',
-      //   name: 'line',
-      //   backgroundImage: 'image/theme/line/bg.jpg',
-      //   preview: 'image/theme/line/preview@2x.png'
-      // },
+      {
+        title: '简约线条',
+        name: 'line',
+        backgroundImage: 'image/theme/line/bg.jpg',
+        preview: 'image/theme/line/preview@2x.png'
+      },
       // {
       //   title: '流星',
       //   name: 'star',

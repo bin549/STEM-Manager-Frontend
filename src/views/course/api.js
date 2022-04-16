@@ -1,15 +1,15 @@
 import { request } from '@/api/service'
 
-export const urlPrefix = '/api/system/operation_log/'
+export const urlPrefix = '/api/course/'
 
-export function GetList(query) {
+export function fetchList(query) {
   return request({
     url: urlPrefix,
     method: 'get',
     params: query
   })
 }
-export function AddObj(obj) {
+export function createObj(obj) {
   return request({
     url: urlPrefix,
     method: 'post',
@@ -17,14 +17,15 @@ export function AddObj(obj) {
   })
 }
 
-export function UpdateObj(obj) {
+export function updateObj(obj) {
   return request({
     url: urlPrefix + obj.id + '/',
     method: 'put',
     data: obj
   })
 }
-export function DelObj(id) {
+
+export function deleteObj(id) {
   return request({
     url: urlPrefix + id + '/',
     method: 'delete',

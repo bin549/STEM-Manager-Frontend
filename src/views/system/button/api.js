@@ -10,14 +10,14 @@ import { request } from '@/api/service'
 
 export const urlPrefix = '/api/system/button/'
 
-export function GetList (query) {
+export function GetList(query) {
   return request({
     url: urlPrefix,
     method: 'get',
     data: query
   })
 }
-export function createObj (obj) {
+export function createObj(obj) {
   return request({
     url: urlPrefix,
     method: 'post',
@@ -25,14 +25,14 @@ export function createObj (obj) {
   })
 }
 
-export function UpdateObj (obj) {
+export function UpdateObj(obj) {
   return request({
     url: urlPrefix + obj.id + '/',
     method: 'put',
     data: obj
   })
 }
-export function DelObj (id) {
+export function DelObj(id) {
   return request({
     url: urlPrefix + id + '/',
     method: 'delete',

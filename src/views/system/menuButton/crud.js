@@ -1,9 +1,4 @@
 /*
- * @创建文件时间: 2021-06-03 00:50:28
- * @Auther: 猿小天
- * @最后修改人: 猿小天
- * @最后修改时间: 2021-07-29 22:49:02
- * 联系Qq:1638245306
  * @文件介绍: 菜单的按钮和接口配置
  */
 import { request } from '@/api/service'
@@ -95,7 +90,7 @@ export const crudOptions = (vm) => {
         itemProps: {
           class: { yxtInput: true }
         },
-        valueChange (key, value, form, { getColumn, mode, component, immediate, getComponent }) {
+        valueChange(key, value, form, { getColumn, mode, component, immediate, getComponent }) {
           if (value != null) {
             const obj = component.dictOptions.find(item => {
               return item.name === value
@@ -222,7 +217,7 @@ export const crudOptions = (vm) => {
           class: { yxtInput: true }
         },
         helper: {
-          render (h) {
+          render(h) {
             return (< el-alert title="请正确填写，以免请求时被拦截。匹配单例使用正则,例如:/api/xx/.*?/" type="warning" />
             )
           }

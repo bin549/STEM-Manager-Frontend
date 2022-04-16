@@ -1,14 +1,5 @@
-<!--
- * @创建文件时间: 2021-06-01 22:41:21
- * @Auther: 猿小天
- * @最后修改人: 猿小天
- * @最后修改时间: 2021-08-12 00:06:38
- * 联系Qq:1638245306
- * @文件介绍:
--->
 <template>
   <d2-container :class="{ 'page-compact': crud.pageOptions.compact }">
-    <!--    <template slot="header">测试页面1</template>-->
     <d2-crud-x
       ref="d2Crud"
       v-bind="_crudProps"
@@ -43,53 +34,52 @@
 </template>
 
 <script>
-import * as api from './api'
-import { crudOptions } from './crud'
-import { d2CrudPlus } from 'd2-crud-plus'
+import * as api from "./api";
+import { crudOptions } from "./crud";
+import { d2CrudPlus } from "d2-crud-plus";
 export default {
-  name: 'menus',
+  name: "menus",
   mixins: [d2CrudPlus.crud],
-  data () {
-    return {}
+  data() {
+    return {};
   },
   methods: {
-    getCrudOptions () {
-      return crudOptions(this)
+    getCrudOptions() {
+      return crudOptions(this);
     },
-    pageRequest (query) {
-      return api.GetList(query)
+    pageRequest(query) {
+      return api.GetList(query);
     },
-    addRequest (row) {
-      return api.createObj(row)
+    addRequest(row) {
+      return api.createObj(row);
     },
-    updateRequest (row) {
-      return api.UpdateObj(row)
+    updateRequest(row) {
+      return api.UpdateObj(row);
     },
-    delRequest (row) {
-      return api.DelObj(row.id)
+    delRequest(row) {
+      return api.DelObj(row.id);
     },
-    // 授权
-    createPermission (scope) {
+    createPermission(scope) {
       this.$router.push({
-        name: 'menuButton',
+        name: "menuButton",
         params: { id: scope.row.id },
-        query: { name: scope.row.name }
-      })
+        query: { name: scope.row.name },
+      });
     },
     // 返回views目录下所有vue文件路径
-    searchFiles () {
-      const files = require.context('@/views', true, /\.vue$/)
-      const result = []
+    searchFiles() {
+      const files = require.context("@/views", true, /\.vue$/);
+      const result = [];
       files.keys().forEach((key) => {
         result.push({
-          label: key.replace(/(\.\/|\.vue)/g, ''),
-          value: key.replace(/(\.\/|\.vue)/g, '')
-        })
-      })
-      return result
-    }
-  }
-}
+          label: key.replace(/(\.\/|\.vue)/g, ""),
+          value: key.replace(/(\.\/|\.vue)/g, ""),
+        });
+      });
+      return result;
+    },
+  },
+};
 </script>
 
 <style lang="scss">
