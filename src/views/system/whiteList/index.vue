@@ -37,15 +37,13 @@
 import * as api from "./api";
 import { crudOptions } from "./crud";
 import { d2CrudPlus } from "d2-crud-plus";
+
 export default {
   name: "whiteList",
   mixins: [d2CrudPlus.crud],
-  data() {
-    return {};
-  },
   methods: {
-    getCrudOptions() {
-      return crudOptions(this);
+      getCrudOptions() {
+        return crudOptions(this);
     },
     pageRequest(query) {
       const menuId = this.$route.params.id;

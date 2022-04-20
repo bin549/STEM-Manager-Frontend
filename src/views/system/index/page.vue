@@ -1,6 +1,3 @@
-<!--
- * @文件介绍:
--->
 <template>
   <d2-container class="page">
     <div style="margin-bottom: 10px">
