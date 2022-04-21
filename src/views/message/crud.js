@@ -1,3 +1,6 @@
+import { BUTTON_CHECK_BOOL } from '@/config/button'
+
+
 export const crudOptions = (vm) => {
     return {
         pageOptions: {
@@ -18,6 +21,7 @@ export const crudOptions = (vm) => {
           edit: {
             thin: true,
             text: '',
+            show: false,
           },
           remove: {
             thin: true,
@@ -58,29 +62,27 @@ export const crudOptions = (vm) => {
                 search: {
                   disabled: true
                 },
-                width: 100,
+                width: 300,
                 component: { props: { color: 'auto' } } // 自动染色
               },
-
               {
-                title: 'description',
-                key: 'description',
+                title: 'content',
+                key: 'content',
+                search: {
+                  disabled: true
+                },
+                width: 500,
+                component: { props: { color: 'auto' } } // 自动染色
+              },
+              {
+                title: 'sender',
+                key: 'sender',
                 search: {
                   disabled: true
                 },
                 width: 100,
                 component: { props: { color: 'auto' } } // 自动染色
               },
-              {
-                title: 'cover_img',
-                key: 'cover_img',
-                search: {
-                  disabled: true
-                },
-                width: 100,
-                component: { props: { color: 'auto' } } // 自动染色
-              },
-
             {
               title: '创建时间',
               key: 'created_time',
@@ -91,75 +93,19 @@ export const crudOptions = (vm) => {
                 disabled: true
               }
             },
-
               {
-                title: 'owner',
-                key: 'owner',
+                title: '状态',
+                key: 'is_read',
+                type: 'dict-switch',
                 search: {
-                  disabled: true
+                  disabled: false
                 },
-                width: 100,
-                component: { props: { color: 'auto' } } // 自动染色
-              },
-              {
-                title: 'genre',
-                key: 'genre',
-                search: {
-                  disabled: true
+                dict: {
+                  data: BUTTON_CHECK_BOOL
                 },
-                width: 100,
-                component: { props: { color: 'auto' } } // 自动染色
+                width: 60,
+                component: { props: { color: 'auto' } }
               },
-
-              {
-                title: 'is_visible',
-                key: 'is_visible',
-                search: {
-                  disabled: true
-                },
-                width: 100,
-                component: { props: { color: 'auto' } } // 自动染色
-              },
-              {
-                title: 'get_absolute_url',
-                key: 'get_absolute_url',
-                search: {
-                  disabled: true
-                },
-                width: 100,
-                component: { props: { color: 'auto' } } // 自动染色
-              },
-
-              {
-                title: 'get_image',
-                key: 'get_image',
-                search: {
-                  disabled: true
-                },
-                width: 100,
-                component: { props: { color: 'auto' } } // 自动染色
-              },
-
-            {
-              title: 'get_student_url',
-              key: 'get_student_url',
-              search: {
-                disabled: true
-              },
-              width: 100,
-              component: { props: { color: 'auto' } } // 自动染色
-            },
-                          {
-                            title: 'serial_number',
-                            key: 'serial_number',
-                            search: {
-                              disabled: true
-                            },
-                            width: 100,
-                            component: { props: { color: 'auto' } } // 自动染色
-                        },
-
-
         ]
     }
 }

@@ -30,3 +30,5 @@ export const BUTTON_STATUS_NUMBER = getButtonSettings([{ label: '启用', value:
 export const BUTTON_WHETHER_NUMBER = getButtonSettings([{ label: '是', value: 1 }, { label: '否', value: 0 }])
 // 是 true/ 否 false
 export const BUTTON_WHETHER_BOOL = getButtonSettings([{ label: '是', value: true }, { label: '否', value: false }])
+
+export const BUTTON_CHECK_BOOL = getButtonSettings([{ label: '已读', value: true }, { label: '未读', value: false }])

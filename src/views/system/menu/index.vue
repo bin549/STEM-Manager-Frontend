@@ -13,13 +13,19 @@
           @submit="handleSearch"
         />
         <el-button-group>
-          <el-button
+          <!-- <el-button
             size="small"
             v-permission="'Create'"
             type="primary"
             @click="addRow"
             ><i class="el-icon-plus" /> 新增</el-button
-          >
+          > -->
+            <el-button
+              size="small"
+              type="primary"
+              @click="addRow"
+              ><i class="el-icon-plus" /> 新增</el-button
+            >
         </el-button-group>
         <crud-toolbar
           :search.sync="crud.searchOptions.show"
@@ -37,6 +43,7 @@
 import * as api from "./api";
 import { crudOptions } from "./crud";
 import { d2CrudPlus } from "d2-crud-plus";
+
 export default {
   name: "menus",
   mixins: [d2CrudPlus.crud],
@@ -66,7 +73,6 @@ export default {
         query: { name: scope.row.name },
       });
     },
-    // 返回views目录下所有vue文件路径
     searchFiles() {
       const files = require.context("@/views", true, /\.vue$/);
       const result = [];

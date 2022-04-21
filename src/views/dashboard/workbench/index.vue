@@ -7,7 +7,7 @@
       >
       </el-avatar>
       <div class="title">
-        <h1>早安, DVAdmin, 开始您一天的工作吧！</h1>
+        <h1>早安, Toby, 开始您一天的工作吧！</h1>
         <span> 今日晴，20℃ - 32℃！ </span>
       </div>
     </div>
@@ -57,7 +57,7 @@
               </el-col>
             </el-row>
           </el-card>
-          <el-card class="box-card" style="margin-top: 25px">
+          <!-- <el-card class="box-card" style="margin-top: 25px">
             <div class="work">
               <d2-icon-svg
                 name="work"
@@ -68,7 +68,7 @@
                 "
               />
             </div>
-          </el-card>
+          </el-card> -->
         </div>
       </el-col>
     </el-row>
@@ -78,50 +78,15 @@
 <script>
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
-import { PieChart } from "echarts/charts";
-import {
-  TitleComponent,
-  TooltipComponent,
-  LegendComponent,
-} from "echarts/components";
 
 use([
   CanvasRenderer,
-  PieChart,
-  TitleComponent,
-  TooltipComponent,
-  LegendComponent,
 ]);
 export default {
   name: "workbench",
   data() {
     return {
-      projects: [
-        {
-          name: "官方文档",
-          imageUrl: "/image/django-vue-admin.png",
-          slogan:
-            "Django-Vue-Admin 是一套全部开源的快速开发平台，毫无保留给个人及企业免费使用。",
-          link: "http://django-vue-admin.com",
-        },
-      ],
       navigators: [
-        {
-          name: "控制台",
-          icon: "home",
-          route: {
-            name: "index",
-          },
-          color: "rgb(31, 218, 202);",
-        },
-        {
-          name: "course管理",
-          icon: "department",
-          route: {
-            name: "course",
-          },
-          color: "rgb(225, 133, 37);",
-        },
         {
           name: "角色管理",
           icon: "role",
@@ -138,34 +103,7 @@ export default {
           },
           color: "rgb(63, 178, 127);",
         },
-        {
-          name: "用户管理",
-          icon: "user",
-          route: {
-            name: "user",
-          },
-          color: "rgb(191, 12, 44);",
-        },
-        {
-          name: "日志管理",
-          icon: "log",
-          route: {
-            name: "operationLog",
-          },
-          color: "rgb(0, 216, 255);",
-        },
       ],
-      chartData: {
-        columns: ["日期", "销售额"],
-        rows: [
-          { 日期: "1月1日", 销售额: 123 },
-          { 日期: "1月2日", 销售额: 1223 },
-          { 日期: "1月3日", 销售额: 2123 },
-          { 日期: "1月4日", 销售额: 4123 },
-          { 日期: "1月5日", 销售额: 3123 },
-          { 日期: "1月6日", 销售额: 7123 },
-        ],
-      },
     };
   },
   methods: {

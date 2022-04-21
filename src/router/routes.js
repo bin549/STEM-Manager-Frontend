@@ -26,33 +26,6 @@ const frameIn = [{
       component: () => import('@/layout/header-aside/components/header-user/userinfo')
     },
     {
-      path: 'page1',
-      name: 'page1',
-      meta: {
-        title: '页面 1',
-        auth: true
-      },
-      component: _import('demo/page1')
-    },
-    {
-      path: 'page2',
-      name: 'page2',
-      meta: {
-        title: '页面 2',
-        auth: true
-      },
-      component: _import('demo/page2')
-    },
-    {
-      path: 'page3',
-      name: 'page3',
-      meta: {
-        title: '页面 3',
-        auth: true
-      },
-      component: _import('demo/page3')
-    },
-    {
       path: 'workbench',
       name: 'workbench',
       meta: {
@@ -70,7 +43,6 @@ const frameIn = [{
       },
       component: _import('system/menu')
     },
-    // // 系统 用户
     // {
     //   path: 'user',
     //   name: 'user',
@@ -80,7 +52,6 @@ const frameIn = [{
     //   },
     //   component: _import('system/user')
     // },
-    // // 系统 按钮配置
     {
       path: 'button',
       name: 'button',
@@ -90,7 +61,6 @@ const frameIn = [{
       },
       component: _import('system/button')
     },
-    // // 系统 菜单权限
     {
       path: 'menuButton/:id',
       name: 'menuButton',
@@ -140,7 +110,6 @@ const frameIn = [{
       },
       component: _import('system/log/operationLog')
     },
-    // 系统 前端日志
     {
       path: 'frontendLog',
       name: 'frontendLog',
@@ -165,8 +134,22 @@ const frameIn = [{
     {
       path: 'course/:route*',
       name: 'course',
+      meta: {
+        title: 'course',
+        auth: true
+      },
       hidden: true,
       component: _import('course/index')
+    },
+    {
+      path: 'message/:route*',
+      name: 'message',
+      meta: {
+        title: '留言管理',
+        auth: true
+      },
+      hidden: true,
+      component: _import('message/index')
     }
   ]
 }]

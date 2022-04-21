@@ -1,6 +1,3 @@
-<!--
- * @文件介绍:
--->
 <template>
   <d2-container :class="{ 'page-compact': crud.pageOptions.compact }">
     <!--    <template slot="header">测试页面1</template>-->

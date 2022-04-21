@@ -1,6 +1,3 @@
-<!--
- * @文件介绍: 图片管理
--->
 <template>
   <d2-container :class="{ 'page-compact': crud.pageOptions.compact }">
     <d2-crud-x

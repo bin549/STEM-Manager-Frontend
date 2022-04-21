@@ -46,6 +46,7 @@ router.beforeEach(async (to, from, next) => {
     if (!store.state.d2admin.menu || store.state.d2admin.menu.aside.length === 0) {
       // 动态添加路由
       getMenu().then(ret => {
+          console.log(ret);
         // 校验路由是否有效
         ret = checkRouter(ret)
         const routes = handleRouter(ret)

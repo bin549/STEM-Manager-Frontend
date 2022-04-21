@@ -119,7 +119,6 @@ export const handleRouter = function (menuData) {
  * 将前端的侧边菜单进行处理
  */
 export const handleAsideMenu = function (menuData) {
-  // 将列表数据转换为树形数据
   const data = XEUtils.toArrayTree(menuData, {
     parentKey: 'parent',
     strict: true

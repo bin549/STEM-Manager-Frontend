@@ -4,9 +4,7 @@ import setting from '@/setting.js'
 export default {
   namespaced: true,
   state: {
-    // 顶栏菜单
     header: [],
-    // 侧栏菜单
     aside: [],
     // 侧边栏收缩
     asideCollapse: setting.menu.asideCollapse,

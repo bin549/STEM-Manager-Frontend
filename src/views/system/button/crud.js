@@ -80,7 +80,6 @@ export const crudOptions = (vm) => {
       search: {
         disabled: false
       },
-
       type: 'input',
       form: {
         rules: [ // 表单校验规则
@@ -101,7 +100,6 @@ export const crudOptions = (vm) => {
       search: {
         disabled: false
       },
-
       type: 'input',
       form: {
         rules: [ // 表单校验规则

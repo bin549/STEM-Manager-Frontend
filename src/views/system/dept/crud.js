@@ -112,7 +112,6 @@ export const crudOptions = (vm) => {
       form: {
         component: {
           span: 12,
-
           props: {
             elProps: {
               clearable: true,

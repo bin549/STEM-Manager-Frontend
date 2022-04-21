@@ -5,7 +5,6 @@ import { urlPrefix as buttonPrefix } from '../button/api'
 import XEUtils from 'xe-utils'
 
 export const crudOptions = (vm) => {
-  // 验证路由地址
   const validateWebPath = (rule, value, callback) => {
     const isLink = vm.getEditForm().is_link
     let pattern = /^\/.*?/
@@ -69,7 +68,6 @@ export const crudOptions = (vm) => {
         size: 'small',
         emit: 'createPermission'
       }]
-
     },
     indexRow: { // 或者直接传true,不显示title，不居中
       title: '序号',

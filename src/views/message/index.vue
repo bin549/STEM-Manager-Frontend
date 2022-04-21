@@ -12,14 +12,6 @@
           :options="crud.searchOptions"
           @submit="handleSearch"
         />
-        <el-button-group>
-            <el-button
-              size="small"
-              type="primary"
-              @click="addRow"
-              ><i class="el-icon-plus" /> 新增</el-button
-            >
-        </el-button-group>
         <crud-toolbar
           :search.sync="crud.searchOptions.show"
           :compact.sync="crud.pageOptions.compact"
@@ -38,7 +30,7 @@ import { crudOptions } from "./crud";
 import { d2CrudPlus } from "d2-crud-plus";
 
 export default {
-  name: "course",
+  name: "message",
     mixins: [d2CrudPlus.crud],
     data() {
       return {};
