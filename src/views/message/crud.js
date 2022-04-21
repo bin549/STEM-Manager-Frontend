@@ -31,7 +31,7 @@ export const crudOptions = (vm) => {
         viewOptions: {
           componentType: 'form'
         },
-        columns: [ 
+        columns: [
               {
                 title: '关键词',
                 key: 'search',

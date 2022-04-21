@@ -58,7 +58,7 @@ export const crudOptions = (vm) => {
                 search: {
                   disabled: true
                 },
-                width: 100,
+                width: 200,
                 component: { props: { color: 'auto' } } // 自动染色
               },
 
@@ -68,7 +68,7 @@ export const crudOptions = (vm) => {
                 search: {
                   disabled: true
                 },
-                width: 100,
+                width: 400,
                 component: { props: { color: 'auto' } } // 自动染色
               },
               {

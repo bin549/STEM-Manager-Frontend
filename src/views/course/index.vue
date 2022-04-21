@@ -17,8 +17,7 @@
               size="small"
               type="primary"
               @click="addRow"
-              ><i class="el-icon-plus" /> 新增</el-button
-            >
+              ><i class="el-icon-plus" /> 新增</el-button>
         </el-button-group>
         <crud-toolbar
           :search.sync="crud.searchOptions.show"

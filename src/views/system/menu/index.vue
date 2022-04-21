@@ -29,7 +29,7 @@
         </el-button-group>
         <crud-toolbar
           :search.sync="crud.searchOptions.show"
-          :compact.sync="crud.pageOptions.compact"
+          :compact.sync="crud.pageOptions.compact"  
           :columns="crud.columns"
           @refresh="doRefresh()"
           @columns-filter-changed="handleColumnsFilterChanged"
