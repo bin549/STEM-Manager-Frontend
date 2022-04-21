@@ -25,7 +25,7 @@
                 :key="index"
                 style="padding: 0"
               >
-                <el-card shadow="hover">
+                <el-card shadow="hover"> 
                   <div
                     style="
                       display: flex;
