@@ -25,7 +25,7 @@
                 :key="index"
                 style="padding: 0"
               >
-                <el-card shadow="hover"> 
+                <el-card shadow="hover">
                   <div
                     style="
                       display: flex;
@@ -79,9 +79,7 @@
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
 
-use([
-  CanvasRenderer,
-]);
+use([CanvasRenderer]);
 export default {
   name: "workbench",
   data() {

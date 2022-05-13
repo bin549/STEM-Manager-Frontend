@@ -23,7 +23,7 @@
     </d2-crud-x>
   </d2-container>
 </template>
-
+ 
 <script>
 import * as api from "./api";
 import { crudOptions } from "./crud";

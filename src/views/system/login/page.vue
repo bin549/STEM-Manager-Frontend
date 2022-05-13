@@ -17,7 +17,7 @@
         flex="dir:top main:justify cross:stretch box:justify"
       >
         <div class="page-login--content-header">
-          <p class="page-login--content-header-motto"> 
+          <p class="page-login--content-header-motto">
             <!-- 时间是一切财富中最宝贵的财富 -->
           </p>
         </div>
@@ -25,7 +25,7 @@
           class="page-login--content-main"
           flex="dir:top main:center cross:center"
         >
-          <img class="page-login--logo" src="./image/dvadmin.png" />
+          <img class="page-login--logo" src="./image/stem.png" />
           <div class="page-login--form">
             <el-card shadow="never">
               <el-form

@@ -2,7 +2,9 @@ import { request } from '@/api/service'
 import { BUTTON_STATUS_BOOL } from '@/config/button'
 import { urlPrefix as deptPrefix } from '../dept/api'
 import util from '@/libs/util'
+
 const uploadUrl = util.baseURL() + 'api/system/img/'
+
 export const crudOptions = (vm) => {
   return {
     pageOptions: {
