@@ -4,11 +4,8 @@
     :style="styleLayoutMainGroup"
     :class="{ grayMode: grayActive }"
   >
-    <!-- 半透明遮罩 -->
     <div class="d2-layout-header-aside-mask"></div>
-    <!-- 主体内容 -->
     <div class="d2-layout-header-aside-content" flex="dir:top">
-      <!-- 顶栏 -->
       <div
         class="d2-theme-header"
         :style="{ opacity: this.searchActive ? 0.5 : 1 }"
